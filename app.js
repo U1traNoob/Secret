@@ -5,7 +5,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
-const bcrypt = require("bcrpyt");
+const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 const app = express();
@@ -60,14 +60,14 @@ app.post("/register", function(req, res) {
             email: req.body.username,
             password: hash
         });
-    });
 
-    newUser.save(function(err) {
-        if (err) {
-            console.log(err);
-        } else {
-            res.render("secrets");
-        }
+        newUser.save(function(err) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.render("secrets");
+            }
+        });
     });
 });
 
